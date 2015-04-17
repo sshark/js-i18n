@@ -1,0 +1,105 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="res/css/bootstrap.min.css">
+    <script type="text/javascript" src="libs/jquery-2.1.3.min.js" ></script>
+    <script type="text/javascript" src="libs/i18next-1.8.0.min.js" ></script>
+    <script type="text/javascript">
+        i18n.init({lng: 'en',
+            resGetPath: 'res/locales/__lng__/__ns__.json' ,
+            ns: 'messages'}, function(t) {
+                $("#days").i18n();
+                $('#th-lang').click(function() {
+                    i18n.setLng('th', function(t) {
+                        $("#days").i18n();
+                        $('#warning-message').fadeIn();
+                    });
+                });
+                var germanButton = $('#de-lang').click(function() {
+                    i18n.setLng('de', function(t) {
+                        $("#days").i18n();
+                        $('#warning-message').fadeOut();
+                    });
+                });
+                var englishButton = $('#en-lang').click(function() {
+                    i18n.setLng('en', function(t) {
+                        $("#days").i18n();
+                        $('#warning-message').fadeOut();
+                    });
+                });
+                
+                                
+                
+        });
+    </script>
+    <style>
+        .top-buffer {
+            margin-top: 20px;
+        }
+
+        #warning-message {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row top-buffer">
+            <div class="col-md-offset-4">
+            <div class="col-md-2">
+                <button id="en-lang" type="button" class="btn btn-default btn-block" value="en">English</button>
+            </div>
+            <div class="col-md-2">
+                <button id="de-lang" type="button" class="btn btn-primary btn-block" value="de">German</button>
+            </div>
+            <div class="col-md-2">
+                <button id="th-lang" type="button" class="btn btn-primary btn-block" value="th">Thai</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 top-buffer">
+                <table class="table" id="days">
+                    <thead>
+                        <tr>
+                            <th>Day (English)</th>
+                            <th><span id="lang-id">Translated<span></th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Monday</td>
+                        <td><span data-i18n="day.mon"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Tuesday</td>
+                        <td><span data-i18n="day.tue"></td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday</td>
+                        <td><span data-i18n="day.wed"></td>
+                    </tr>
+                    <tr>
+                        <td>Thursday</td>
+                        <td><span data-i18n="day.thu"></td>
+                    </tr>
+                    <tr>
+                        <td>Friday</td>
+                        <td><span data-i18n="day.fri"></td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td><span data-i18n="day.sat"></td>
+                    </tr>
+                    <tr>
+                        <td>Sunday</td>
+                        <td><span data-i18n="day.sun"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row top-buffer">
+            <div class="col-md-6 col-md-offset-3">
+            <p class="text-warning" id="warning-message">Thai translations for Saturday and Sunday were deliberately left out to illustrate fallback to default English language for missing translations.
+            </div>
+    </div>
+</body>
+</html>
+
